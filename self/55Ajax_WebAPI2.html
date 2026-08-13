@@ -13,6 +13,25 @@
 <body>
 
     <div class="container">
+
+        <div id="adPhotoCarousel" class="carousel slide" data-bs-ride="carousel">
+
+            <div class="carousel-indicators">
+
+            </div>
+            <div class="carousel-inner">
+
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#adPhotoCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#adPhotoCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+
         <div class="table">
             <div class="row justify-content-center">
 
@@ -31,21 +50,43 @@
         crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery@4.0.0/dist/jquery.min.js"></script>
     <script>
+        let myData;
         let tempStr = `<div class="spinner-border my-3" role="status">
                         <span class="visually-hidden">Loading...</span>
                     </div>`;
         $('.container .table .row').html(tempStr);
-        $.ajax({
-            url: 'https://api.kcg.gov.tw/Api/Service/Get/9c8e1450-e833-499c-8320-29b36b7ace5c',
-            dataType: 'json',
-            success: function (resp) {
-                let myData = resp.data.AttractionList.Attractions.Attraction;
-                let structure = "";
+
+
+        function getDataByAPI(callback) {
+            let myData;
+            $.ajax({
+                url: 'https://api.kcg.gov.tw/Api/Service/Get/9c8e1450-e833-499c-8320-29b36b7ace5c',
+                dataType: 'json',
+                success: function (resp) {
+                    myData = resp.data.AttractionList.Attractions.Attraction;
+                    callback(myData);   //回呼方法;
+                }
+            });
+        }
+
+        getDataByAPI(function(items){
+            // console.log(items);
+            myData = items;
+            // 確定有拿到資料
+            // 初始化Carousel、DataList、PageItem
+            initCarousel();
+            getDataList(1, 20);    
+            initPageItem();
+        });
+
+        //最下方頁碼/
+        function initPageItem(){
+            let structure = "";
                 let pStruc = "";
                 let item = "";
                 let pageSize = 20;
                 let pageCount = Math.ceil(myData.length / pageSize);
-                console.log(myData.length);
+                // console.log(myData.length);
                 //做分頁
                 for (let i = 1; i <= pageCount; i++) {
                     // (i*pageSize)>myData.length
@@ -56,32 +97,63 @@
                     `;
                     $('#myPage ul').append(pStruc);
                 }
-            }
-        });
+        }
 
-        getDataList(1, 20);
+        //最上方的照片輪播
+        function initCarousel() {
+            //亂數隨機取10張
+            //將要取的牌(資料)加入牌池陣列 -> 洗牌 -> 取前10
+            //取資料筆數
+            let dataLength = myData.length;
+            //隨機取 0~(dataLength-1) 的整數
+            let r = Math.floor(Math.random() * dataLength);
+            //將資料按順序丟到陣列裡
+            let arrItem = [];   //宣告空陣列
+            for (let item of myData) {
+                arrItem.push(item.Images.Image.URL);    //將照片
+            }
+            // console.log(arrItem);   //在console檢查arrItem取值是否正常
+            //將陣列順序打亂
+            let temp = "";
+            for (let i = 0; i < dataLength; i++) {
+                r = Math.floor(Math.random() * dataLength);
+                //兩數交換
+                temp = arrItem[i];
+                arrItem[i] = arrItem[r];
+                arrItem[r] = temp;
+            }
+            // console.log(arrItem);   //在console檢查arrItem洗牌是否正常
+            //取出前10筆放到Carousel//實做Carousel inner//實做Carousel Indicator
+            let photoItem = ``,indicatorItem = ``;
+            for (let i = 0; i < 10; i++) {
+                let a = i == 0 ? "active" : "";
+                let aa = i == 0 ? 'aria-current="true"' : "";
+                photoItem = `
+                    <div class="carousel-item ${a}">
+                        <img src="${arrItem[i]}" class="d-block w-100 object-fit-cover" style="height:500px;" alt="...">
+                    </div>
+                    `
+                indicatorItem = `
+                        <button type="button" data-bs-target="#adPhotoCarousel" data-bs-slide-to="${i}" class="${a}"
+            ${aa} aria-label="Slide ${i + 1}"></button>
+                        `;
+
+                $('#adPhotoCarousel .carousel-inner').append(photoItem);
+                $('#adPhotoCarousel .carousel-indicators').append(indicatorItem);
+            }
+
+        }
+
+
 
         function getDataList(page, pageSize) {
-            $.ajax({
-                url: 'https://api.kcg.gov.tw/Api/Service/Get/9c8e1450-e833-499c-8320-29b36b7ace5c',
-                dataType: 'json',
-                success: function (resp) {
-                    // console.log(resp.data);
-                    // console.log(resp.data.AttractionList.Attractions.Attraction[0].Images.Image.URL);
-
-                    let myData = resp.data.AttractionList.Attractions.Attraction;
-                    // console.log(myData);
-
-                    let structure = "";
-                    let item = "";
-
-                    //讀資料
-                    // for (let item of myData) {
-                    for (let i = (page - 1) * pageSize; i < page * pageSize; i++) {
-                        item = myData[i];
-                        // console.log('inGetList:'+item.Images.Image.URL);
-                        structure +=
-                            `
+            let structure = "";
+            let item = "";
+            //讀資料
+            for (let i = (page - 1) * pageSize; i < page * pageSize; i++) {
+                item = myData[i];
+                structure +=
+                    `
                 <div class="col-xl-3 col-md-6 mb-3">
                 <div class="card shadow h-100" >
                     <img src="${item.Images.Image.URL}" class="card-img-top " alt="...">
@@ -99,12 +171,9 @@
                 </div>
                 </div>
                 `;
+            }
 
-                    }
-                    $('.container .table .row').html(structure);
-                }
-            });
-
+            $('.container .table .row').html(structure);
 
         }
     </script>
