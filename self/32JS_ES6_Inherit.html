@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //類別、物件、建構子、屬性、方法、欄位、繼承
+        //在JS無法直接實作的是:方法多載(overloading)、建構子多載、多型
+
+        //類別繼承的實作
+        //繼承的目的是:滅少程式碼重複撰寫
+        //透過物件的抽象化
+
+        //實作類別：狗、貓、豬、牛……
+        //雞、鴨=>禽
+        //雞、鴨、鳥、鵝=>鳥
+        //豬、牛=>畜
+        //魚、蝦、貝=>海鮮
+        //狗、貓=>寵物
+        //雞、鴨、豬、牛、魚、蝦、貝、狗、貓=>動物
+
+        //抽象化即使用 可以概括更多類別 的類別來囊括
+        //特別化為抽象化的反向，描述更具體
+
+        //狗、貓、豬 有很多相同點，但有部分不同，即可抽象化為父類別 寵物
+        class Pet {
+            //欄位
+            #name;
+            #age;
+            #gender;
+            get Name() {
+                return this.#name;
+            }
+            set Name(v) {
+                this.#name = v;
+            }
+            get Age() {
+                return this.#age;
+            }
+            set Age(v) {
+                this.#age = v;
+            }
+            get Gender() {
+                return this.#gender;
+            }
+            set Gender(v) {
+                this.#gender = v;
+            }
+            Eat() {
+                return "吃";
+            }
+            Run() {
+                return "跑";
+            }
+        }
+
+        class Dog extends Pet {
+            Run() {
+                return "跑得很快";
+            }
+        }
+        class Cat extends Pet {
+            Jump() {
+                return "跳得很高";
+            }
+        }
+        class Pig extends Pet {
+        }
+        class Fish extends Pet {
+            Swim() {
+                return "游";
+            }
+        }
+        let Jack = new Dog();
+        console.log(Jack.Run());
+
+
+    </script>
+</body>
+
+</html>

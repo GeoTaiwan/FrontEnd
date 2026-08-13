@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Welcome My Homepage</h1>
+
+    <h1 style="text-decoration: overline;">Welcome My Homepage</h1>
+    <h1 style="text-decoration: underline;">Welcome My Homepage</h1>
+    <h1 style="text-decoration: line-through;">Welcome My Homepage</h1>
+
+    <h1 style="text-decoration: none;">Welcome My Homepage</h1>
+
+    <h1><u style="text-decoration: none;">Welcome My Homepage</u></h1>
+
+    <h1><a href="#" style="text-decoration: none;">test</a></h1>
+
+    <a href="#" style="text-decoration: none;font-size: 2rem;font-weight: 900;color: #000000;">test</a>
+
+    <a href="#" style="text-decoration: none;font-size: 2rem;font-weight: 900;color:rgb(21, 255, 0);">test</a>
+    <!--CSS表達顏色時會有三種，直接寫顏色名、16進位、10進位-->
+    <hr style="height: 200px;border-color: red; background-color: yellow;">
+    <div style="color: red;background-color: yellow;border-color: blue;border-width: 5px;border-style: solid;">
+        中華民國（Republic of China，簡稱
+        R.O.C.）青天白日滿地紅國旗，由臺灣島、澎湖群島、金門群島、（連江）馬祖列島、綠島、蘭嶼、南沙群島（太平島）、東沙環礁等地區通用國家旗幟（筆者愛稱四方八島或四方八道），主色系由紅色、藍色和白色共三色組成。
+
+        但是你知道我們國旗顏色的RGB、HEX 以及 CMYK 彩色色碼值為多少嗎？
+
+        中華民國國旗顏色色碼
+        目前通俗認定的中華民國國旗顏色是由下面三種組成，包括：
+
+        藍色（Blue，青色）
+        RGB 0 0 149
+        Hexadecimal #000095
+        CMYK 100, 100, 0, 42
+        紅色（Red）
+        RGB 255 0 0
+        Hex #FE0000
+        CMYK 0, 100, 100, 0
+        白色（White）
+        RGB 255 255 255
+        Hex #FFFFFF
+        CMYK 0, 0, 0, 0
+    </div>
+    <div style="color: red;background-color: yellow;border: 20px dashed #fa0;">
+        中華民國（Republic of China，簡稱
+        R.O.C.）青天白日滿地紅國旗，由臺灣島、澎湖群島、金門群島、（連江）馬祖列島、綠島、蘭嶼、南沙群島（太平島）、東沙環礁等地區通用國家旗幟（筆者愛稱四方八島或四方八道），主色系由紅色、藍色和白色共三色組成。
+
+        但是你知道我們國旗顏色的RGB、HEX 以及 CMYK 彩色色碼值為多少嗎？
+
+        中華民國國旗顏色色碼
+        目前通俗認定的中華民國國旗顏色是由下面三種組成，包括：
+
+        藍色（Blue，青色）
+        RGB 0 0 149
+        Hexadecimal #000095
+        CMYK 100, 100, 0, 42
+        紅色（Red）
+        RGB 255 0 0
+        Hex #FE0000
+        CMYK 0, 100, 100, 0
+        白色（White）
+        RGB 255 255 255
+        Hex #FFFFFF
+        CMYK 0, 0, 0, 0
+    </div>
+
+    <hr>
+
+    <input id="s" type="button" value="小" onclick="changeSize('1rem')">
+    <input id="m" type="button" value="中" onclick="changeSize('1.5rem')">
+    <input id="l" type="button" value="大" onclick="changeSize('2rem')">
+    <div id="news" style="font-size: 1rem;">
+        記者吳美依／綜合報導
+        美國與伊朗達成2周停火協議，雙方都宣稱取得勝利，並且預計10日在巴基斯坦展開會談。美國總統川普受訪時透露，他認為中國促成德黑蘭同意停火與談判，也回應了荷姆茲海峽及伊朗濃縮鈾的問題。
+        原文網址：https://www.ettoday.net/news/20260408/3145693.htm#ettoday
+    </div>
+    <script>
+        var buttonSize;
+        var news = document.getElementById("news");
+        var s = document.getElementById("s");
+        var m = document.getElementById("m");
+        var l = document.getElementById("l");
+        s.style.scale = 0.8;
+        function changeSize(e) {
+            news.style.fontSize = e;
+            switch (e) {
+                case '1rem':
+                    s.style.scale = 0.8;
+                    m.style.scale = 1;
+                    l.style.scale = 1;
+                    break;
+                case '1.5rem':
+                    s.style.scale = 1;
+                    m.style.scale = 0.8;
+                    l.style.scale = 1;
+                    break;
+                default:
+                    s.style.scale = 1;
+                    m.style.scale = 1;
+                    l.style.scale = 0.8;
+            }
+        }
+    </script>
+</body>
+
+</html>

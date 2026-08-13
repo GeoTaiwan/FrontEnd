@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>音樂播放器 — 勞動力發展署桃竹苗分署</title>
+    <link rel="stylesheet" href="css/player.css">
+</head>
+<body>
+
+    <div class="page-wrapper">
+
+        <!-- ========== Logo Section (本分署標誌) ========== -->
+        <header class="logo-section" role="banner">
+            <div class="logo-emblem" aria-hidden="true"><img src="images/logo.png" width="60"></div>
+            <div class="logo-text-group">
+                <span class="logo-title">勞動部勞動力發展署</span>
+                <span class="logo-subtitle">高屏澎東署</span>
+            </div>
+        </header>
+
+        <!-- ========== Player Card (主播放器介面) ========== -->
+        <main class="player-card" role="main">
+
+            <!-- 專輯封面 -->
+            <div class="album-art-container">
+                <div class="album-art" id="albumArt" aria-hidden="true">🎵</div>
+            </div>
+
+            <!-- 曲目資訊 -->
+            <div class="track-info">
+                <div class="track-title" id="trackTitle">請選擇曲目</div>
+                <div class="track-artist" id="trackArtist">Background Music</div>
+            </div>
+
+            <!-- 資訊看板 (狀態、曲目、時間) -->
+            <section class="info-board" aria-label="播放狀態資訊看板">
+                <div class="info-item">
+                    <span class="info-label">狀態</span>
+                    <span class="info-value status-stopped" id="infoStatus">STOPPED</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">曲目</span>
+                    <span class="info-value" id="infoTrack">1 / 6</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">時間</span>
+                    <span class="info-value" id="infoTime">0:00</span>
+                </div>
+            </section>
+
+            <!-- 播放進度條 -->
+            <section class="progress-section" aria-label="播放進度">
+                <div class="time-display">
+                    <span id="timeElapsed">0:00</span>
+                    <span id="timeTotal">0:00</span>
+                </div>
+                <div class="progress-container"
+                     id="progressContainer"
+                     role="slider"
+                     aria-label="播放進度條，可拖曳調整位置"
+                     aria-valuemin="0"
+                     aria-valuemax="100"
+                     aria-valuenow="0">
+                    <div class="progress-bar"   id="progressBar"></div>
+                    <div class="progress-thumb" id="progressThumb"></div>
+                </div>
+            </section>
+
+            <!-- 控制按鈕區 -->
+            <section class="controls-section" aria-label="播放控制">
+
+                <!-- 主控制列：上一首 / 倒轉 / 播放暫停 / 快轉 / 下一首 -->
+                <div class="main-controls">
+                    <button class="btn btn-icon" id="btnPrev" title="上一首 (P)" aria-label="上一首">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M556.2 541.6C544.2 546.6 530.5 543.8 521.3 534.7L352 365.3L352 512C352 524.9 344.2 536.6 332.2 541.6C320.2 546.6 306.5 543.8 297.3 534.7L128 365.3L128 512C128 529.7 113.7 544 96 544C78.3 544 64 529.7 64 512L64 128C64 110.3 78.3 96 96 96C113.7 96 128 110.3 128 128L128 274.7L297.4 105.4C306.6 96.2 320.3 93.5 332.3 98.5C344.3 103.5 352 115.1 352 128L352 274.7L521.4 105.3C530.6 96.1 544.3 93.4 556.3 98.4C568.3 103.4 576 115.1 576 128L576 512C576 524.9 568.2 536.6 556.2 541.6z"/></svg>
+                    </button>
+
+                    <button class="btn btn-seek" id="btnRewind" title="倒轉 10 秒 (←)" aria-label="倒轉10秒">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M236.3 107.1C247.9 96 265 92.9 279.7 99.2C294.4 105.5 304 120 304 136L304 272.3L476.3 107.2C487.9 96 505 92.9 519.7 99.2C534.4 105.5 544 120 544 136L544 504C544 520 534.4 534.5 519.7 540.8C505 547.1 487.9 544 476.3 532.9L304 367.7L304 504C304 520 294.4 534.5 279.7 540.8C265 547.1 247.9 544 236.3 532.9L44.3 348.9C36.5 341.3 32 330.9 32 320C32 309.1 36.5 298.7 44.3 291.1L236.3 107.1z"/></svg>
+                       <!--  <span class="seek-label">-10s</span> -->
+                    </button>
+
+                    <button class="btn btn-play" id="btnPlay" title="播放 (空白鍵)" aria-label="播放">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M187.2 100.9C174.8 94.1 159.8 94.4 147.6 101.6C135.4 108.8 128 121.9 128 136L128 504C128 518.1 135.5 531.2 147.6 538.4C159.7 545.6 174.8 545.9 187.2 539.1L523.2 355.1C536 348.1 544 334.6 544 320C544 305.4 536 291.9 523.2 284.9L187.2 100.9z"/></svg>
+                    </button>
+
+                    <button class="btn btn-seek" id="btnForward" title="快轉 10 秒 (→)" aria-label="快轉10秒">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M403.7 107.1C392.1 96 375 92.9 360.3 99.2C345.6 105.5 336 120 336 136L336 272.3L163.7 107.2C152.1 96 135 92.9 120.3 99.2C105.6 105.5 96 120 96 136L96 504C96 520 105.6 534.5 120.3 540.8C135 547.1 152.1 544 163.7 532.9L336 367.7L336 504C336 520 345.6 534.5 360.3 540.8C375 547.1 392.1 544 403.7 532.9L595.7 348.9C603.6 341.4 608 330.9 608 320C608 309.1 603.5 298.7 595.7 291.1L403.7 107.1z"/></svg>
+                       <!--  <span class="seek-label">+10s</span> -->
+                    </button>
+
+                    <button class="btn btn-icon" id="btnNext" title="下一首 (N)" aria-label="下一首">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M83.8 541.6C95.8 546.6 109.5 543.8 118.7 534.7L288 365.3L288 512C288 524.9 295.8 536.6 307.8 541.6C319.8 546.6 333.5 543.8 342.7 534.7L512 365.3L512 512C512 529.7 526.3 544 544 544C561.7 544 576 529.7 576 512L576 128C576 110.3 561.7 96 544 96C526.3 96 512 110.3 512 128L512 274.7L342.6 105.3C333.4 96.1 319.7 93.4 307.7 98.4C295.7 103.4 288 115.1 288 128L288 274.7L118.6 105.4C109.4 96.2 95.7 93.5 83.7 98.5C71.7 103.5 64 115.1 64 128L64 512C64 524.9 71.8 536.6 83.8 541.6z"/></svg>
+                    </button>
+                </div>
+
+                <!-- 停止按鈕 -->
+                <div class="secondary-controls">
+                    <button class="btn btn-stop" id="btnStop" title="停止" aria-label="停止">
+                        ⏹ 停止
+                    </button>
+                </div>
+            </section>
+
+            <!-- 音量控制 -->
+            <section class="volume-section" aria-label="音量控制">
+                <span class="volume-icon" id="volumeIcon"
+                      title="靜音切換 (M)" role="button"
+                      tabindex="0" aria-label="靜音切換">🔊</span>
+                <input type="range"
+                       class="volume-slider"
+                       id="volumeSlider"
+                       min="0" max="1" step="0.01" value="0.7"
+                       aria-label="音量">
+                <span class="volume-value" id="volumeValue">70%</span>
+            </section>
+
+            <!-- 播放清單 (直接選擇曲目) -->
+            <section class="tracklist-section" aria-label="播放清單">
+                <div class="tracklist-header">播放清單</div>
+                <div id="trackList" role="list"></div>
+            </section>
+
+        </main>
+
+        <!-- 鍵盤捷徑提示 -->
+        <footer class="shortcuts-footer" aria-label="鍵盤捷徑說明">
+            <span class="shortcut-tag">⌨ 鍵盤捷徑</span>
+            <span class="shortcut-tag">空白鍵 = 播放/暫停</span>
+            <span class="shortcut-tag">← → = 倒/快轉</span>
+            <span class="shortcut-tag">↑ ↓ = 音量</span>
+            <span class="shortcut-tag">N / P = 下/上首</span>
+            <span class="shortcut-tag">M = 靜音</span>
+        </footer>
+
+    </div>
+
+    <script src="js/player.js"></script>
+</body>
+</html>

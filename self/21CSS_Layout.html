@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* .borderOn {
+            border: 1px solid black;
+        } */
+        
+        #container {
+            border: 1px solid black;
+            width: 1500px;
+            margin: auto;   /* auto時，會自動調整邊界，可左右置中 */
+            
+            >*{
+            /* >*為選擇底下所有元素 */
+                color: red;
+                /* border: 1px solid black; */
+            }
+
+            >header {
+                height: 200px;
+                background-color: antiquewhite;
+            }
+
+            >nav {
+                background-color:aqua;
+                height: 700px;
+                width: 300px;
+                float: left;
+            }
+            >section{
+                background-color:aquamarine;
+                height: 700px;
+                width: 1200px;
+                float: right;
+            }
+
+            >footer{
+                height: 200px;
+                background-color:bisque;
+                /* clear為清除float的影響,沒有設定height時不會被影響 */
+                clear: both;    
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 外層須用一個div包覆版面 故版面需要的區塊n+1為所須之div數量 -->
+    <div id="container" class="">
+        <!-- header、nav…等為有語意的div -->
+        <!-- header為標頭、nav為導覽、section為最常用的區塊，一般放內容 -->
+        <!-- 另外還有article、aside…等，如下 -->
+        <!-- 
+        <header> - Defines a header for a document or a section
+        <nav> - Defines a set of navigation links
+        <section> - Defines a section in a document
+        <article> - Defines independent, self-contained content
+        <aside> - Defines content aside from the content (like a sidebar)
+        <footer> - Defines a footer for a document or a section
+        <details> - Defines additional details that the user can open and close on demand
+        <summary> - Defines a heading for the <details> element -->
+        <header>top</header>
+        <nav>left</nav>
+        <section>right</section>
+        <footer>buttom</footer>
+    </div>
+</body>
+
+</html>

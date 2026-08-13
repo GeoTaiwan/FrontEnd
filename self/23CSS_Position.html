@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* CSS操作position位置重疊時,html tag愈晚寫的會在愈上方 */
+        #container {
+            display: flex;
+            --containerWidth: 1266px;
+            width: var(--containerWidth);
+            flex-direction: row;
+            flex-wrap: wrap;
+            margin: auto;
+            position: relative;
+
+            >header {
+                width: inherit;
+                /* height: 174px; */
+            }
+
+
+            >footer {
+                width: inherit;
+            }
+        }
+
+
+
+        #banner1 {
+            /*absolute為視窗loading後絕對位置*/
+            /*fixed會產生凍結窗格的效果*/
+            position: fixed;
+            left: 8px;
+            top: 0;
+        }
+
+        #banner2 {
+            position: fixed;
+            right: 8px;
+            top: 0;
+        }
+
+        #ad {
+            /* 若子節點的位置要相對於父節點，父節點的position必須改為relative */
+            /* 此例#container為父節點，#ad為子節點 */
+            position: absolute;
+            left: calc((var(--containerWidth) - 1053px)/2);
+            top: 30px;
+            box-shadow: 0 0 20px black;
+            z-index: 99;
+            /*圖層 須與position搭配 愈大愈上方(不想被蓋住的區塊) 愈小愈下方(被蓋掉沒關系的區塊) */
+        }
+
+        #ad.closed {
+            /* 關閉廣告的話，藏到背景 */
+            /* z-index: -1; */
+            /* display:none; */
+            display: none;
+        }
+
+        #container2 {
+            display: flex;
+
+            >header {
+                height: 100px;
+                width: 100px;
+                --spinDegree: 0deg;
+                background-image: conic-gradient(from var(--spinDegree), red, orange, yellow, green, blue, indigo, purple, red);
+                animation: spinningColor 10s infinite reverse;
+            }
+        }
+
+        @keyframes spinningColor {
+            0% {
+                --spinDegree: 0deg;
+            }
+
+            25% {
+                --spinDegree: 90deg;
+            }
+
+            50% {
+                --spinDegree: 180deg;
+            }
+
+            75% {
+                --spinDegree: 270deg;
+            }
+
+            100% {
+                --spinDegree: 360deg;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="container">
+        <header>
+            <img src="../teacher/css/top.jpg" alt="">
+        </header>
+        <nav>
+            <img src="../teacher/css/left.jpg" alt="">
+        </nav>
+        <section>
+            <img src="../teacher/css/right.jpg" alt="">
+        </section>
+        <footer>
+            <img src="../teacher/css/bottom.jpg" alt="">
+        </footer>
+        <div id="ad">
+            <button id="closeAD">&times;點我關閉</button><br>
+            <img src="../teacher/css/ad.jpg">
+        </div>
+    </div>
+    <img src="../teacher/css/banner1.jpg" id="banner1">
+    <img src="../teacher/css/banner2.jpg" id="banner2">
+
+    <div id="container2">
+        <header>123</header>
+    </div>
+    <script>
+        var CLOSE_AD = document.getElementById('closeAD');
+        var AD = document.getElementById('ad');
+        CLOSE_AD.addEventListener('click', () => {
+            AD.classList.add("closed");
+        })
+    </script>
+</body>
+
+</html>

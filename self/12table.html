@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            border: 1px solid black;
+            /* border-collapse: collapse; */
+            /*合併邊框*/
+        }
+
+        th,
+        td {
+            width: 30%;
+            border: 1px solid black;
+            width: 150px;
+        }
+
+        tr {
+            height: 60px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 表格預設不顯示框線 
+     html的屬性預設值就是px
+     預設設定完table的寬高後，儲存格會平均分配寬高
+     有內容的儲存格會佔據更多的空間，內容愈多也會分配更多空間-->
+
+    <!-- 學習表格
+    1.如何畫表格
+    2.各表格在哪裡
+    3.各儲存格外觀設定的方式 -->
+    <!-- 避免用html設定外觀，應使用CSS設定 -->
+
+    <!-- <table style="border: 1px solid black;border-collapse: collapse"> -->
+    <!--table會自動產生tbody標籤，thead、tfoot須自行寫入(不在thead或tfoot中的，統統會被列入tbody中)。顯示時，thead固定在最上一列，tfoot在最下一列。-->
+    <table>
+        <tbody>
+            <tr>
+                <td></td>
+                <td rowspan="3"></td>
+                <td></td>
+                <td rowspan="2" colspan="2"></td>
+                
+            </tr>
+            <tr>
+                
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td rowspan="2"></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                
+                <td></td>
+                <td rowspan="2" colspan="2"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td rowspan="2" colspan="2"></td>
+                <td></td>
+            </tr>
+            <tr>
+                
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+    <hr>
+    <!-- 5*8 -->
+    <table>
+        <tbody>
+            <tr>
+                <td></td>
+                <td></td>
+                <td colspan="3"></td>
+                
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td colspan="2"></td>
+                
+            </tr>
+            <tr>
+                <td colspan="2" rowspan="2"></td>
+                <td colspan="2"></td>
+                <td></td>
+                
+            </tr>
+            <tr>
+                <td></td>
+                <td rowspan="2"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td rowspan="3"></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td colspan="2"></td>
+                <td colspan="2"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td colspan="2"></td>
+                
+                
+            </tr>
+        </tbody>
+    </table>
+    <hr>
+    <table>
+        <colgroup>
+            <col style="background-color: aquamarine;">
+            <col>
+        </colgroup>
+        <colgroup>
+            <col>
+        </colgroup>
+
+        <tfoot>
+            <tr>
+                <td colspan="3">製表人：王小明</td>
+
+            </tr>
+        </tfoot>
+
+        <tr>
+            <td>張三</td>
+            <td>88</td>
+            <td>95</td>
+        </tr>
+        <tr>
+            <td>李四</td>
+            <td>76</td>
+            <td>80</td>
+        </tr>
+        <tr>
+            <td>王五</td>
+            <td>78</td>
+            <td>91</td>
+        </tr>
+
+        <thead>
+            <tr>
+                <th>姓名</th>
+                <th>國文</th>
+                <th>英文</th>
+            </tr>
+        </thead>
+        <caption>成績單</caption>
+    </table>
+
+    <hr>
+    <table>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>2四四四四</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td>2</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+</body>
+
+</html>

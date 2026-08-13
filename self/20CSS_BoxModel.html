@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        
+
+        .borderOn {
+            border: 1px solid black;
+        }
+
+        .bgOn {
+            background-color: aqua;
+        }
+
+        #firstEle {
+            width: inherit;
+        }
+
+        #secEle {
+            width: 50%;
+        }
+
+        #test {
+            margin: 30px;
+            border: 30px solid black;
+            padding: 30px;
+            width: 30%;
+        }
+
+        #contentText {
+            display: block;
+            background: blueviolet;
+        }
+
+        #test2 {
+            margin: 30px;
+            border: 30px solid black;
+            padding: 30px;
+            width: 30%;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- body預設margin為8px -->
+    <!-- 也就是html與body之間有8px -->
+    <!-- h1預設的的width是繼承父節點 -->
+    <h1 id="firstEle" class="borderOn bgOn">Welcome My Homepage!!</h1>
+
+    <h1 id="secEle" class="bgOn">Welcome My Homepage!!</h1>
+
+    <h1>Welcome My Homepage!!</h1>
+
+    <p>Welcome My Homepage!!</p>
+    <span>Welcome My Homepage!!</span>
+    <b>Welcome My Homepage!!</b>
+    <div class="borderOn">
+        <div style="background-color:beige; padding: 1px; width:min-content;">
+            <!-- 外層div的padding至少要1，否則內容的上、下margin不會作用。 -->
+            <div id="test">
+                <span id="contentText" style="background-color: brown;">Welcome My Homepage!!</span>
+            </div>
+        </div>
+        <div id="test2"></div>
+    </div>
+
+    <script>
+        // javaScript
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>高級音樂播放器 - Music Player Pro</title>
+    <link rel="stylesheet" href="player.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+</head>
+
+<body>
+    <div class="player-container">
+        <!-- Logo 區域 -->
+        <div class="logo-section">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 80'%3E%3Crect fill='%23667eea' width='200' height='80' rx='8'/%3E%3Ctext x='50%' y='50%' font-size='24' font-weight='bold' fill='white' text-anchor='middle' dominant-baseline='central'%3E分署LOGO%3C/text%3E%3C/svg%3E"
+                alt="分署Logo">
+            <div class="logo-text">行政院勞動部勞動力發展署</div>
+        </div>
+
+        <!-- 標題 -->
+        <h1 class="player-title">🎵 音樂播放器</h1>
+        
+        <!-- 資訊看版 -->
+        <div class="info-display">
+            <div class="info-row">
+                <span class="info-label">目前曲目：</span>
+                <span class="song-title" id="songTitle">Happy Day</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">播放狀態：</span>
+                <span class="info-value" id="status">已停止</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">時間進度：</span>
+                <span class="time-info">
+                    <span id="currentTime">0:00</span>
+                    <span>/</span>
+                    <span id="duration">0:00</span>
+                </span>
+            </div>
+        </div>
+
+        <!-- 進度條 -->
+        <div class="progress-section">
+            <div class="progress-bar-container" id="progressBarContainer">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+            <div class="time-display">
+                <span id="currentTime">0:00</span>
+                <span id="duration">3:00</span>
+            </div>
+        </div>
+
+        <!-- 曲目選擇 -->
+        <div class="playlist-section">
+            <label class="playlist-label" for="playlistSelect">選擇曲目：</label>
+            <select id="playlistSelect" class="playlist-select"></select>
+        </div>
+
+        <!-- 控制按鈕 -->
+        <div class="control-buttons">
+            <button class="btn btn-secondary tooltip" id="prevBtn" data-tooltip="上一首 (不支援)">
+                ⏮️ 上一首
+            </button>
+            <button class="btn btn-secondary tooltip" id="rewindBtn" data-tooltip="倒轉10秒">
+                ⏪ 倒轉
+            </button>
+            <button class="btn btn-primary tooltip" id="playBtn" data-tooltip="播放 (Space)">
+                <i class="fa-solid fa-volume"></i>Play
+            </button>
+            <button class="btn btn-secondary tooltip" id="pauseBtn" data-tooltip="暫停">
+                ⏸️ 暫停
+            </button>
+            <button class="btn btn-secondary tooltip" id="stopBtn" data-tooltip="停止">
+                ⏹️ 停止
+            </button>
+        </div>
+
+        <div class="control-buttons">
+            <button class="btn btn-secondary tooltip" id="fastForwardBtn" data-tooltip="快轉10秒"
+                style="grid-column: span 2;">
+                ⏩ 快轉
+            </button>
+            <button class="btn btn-secondary tooltip" id="nextBtn" data-tooltip="下一首">
+                ⏭️ 下一首
+            </button>
+            <div style="grid-column: span 2;"></div>
+        </div>
+
+        <!-- 音量控制 -->
+        <div class="volume-section">
+            <span class="volume-icon">🔊</span>
+            <input type="range" id="volumeSlider" class="volume-slider" min="0" max="100" value="70">
+            <span class="volume-value" id="volumeValue">70%</span>
+        </div>
+
+        <!-- 隱藏的音頻元素 -->
+        <audio id="audioPlayer" class="audio-element"></audio>
+    </div>
+    <span><i class="fa-solid fa-volume"></i></span>
+    <!-- 引入 JavaScript 文件 -->
+    <script src="player.js"></script>
+</body>
+
+</html>

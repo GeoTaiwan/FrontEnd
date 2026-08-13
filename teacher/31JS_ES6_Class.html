@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        //分類=>類別class
+        class Pen {
+            //field(欄位)
+            //color;  //公有的 public
+
+            #color;  //私有的 private
+            #conver;
+            #refill;
+            #width;
+
+            //屬性封裝
+            get Color() {
+                return "這是一支" + this.#color + "的筆";
+            }
+
+            set Color(val) {
+                this.#color = val;
+            }
+
+            get Width() {
+                return "這支筆的長度是" + this.#width;
+            }
+
+            set Width(val) {
+                if (val < 3)
+                    this.#width = 3;
+                else
+                    this.#width = val;
+            }
+
+
+            //唯寫
+            set Refill(val) {
+
+                this.#refill = val;
+            }
+
+
+            //方法封裝
+            //筆的方法(功能) method
+            //會寫字
+            Write(name) {
+
+                if (name == undefined)
+                    return "Hello World!!";
+                else
+                    return name + " Hello World!!";
+            }
+
+
+            setCover(val) {
+                this.#conver = val;
+            }
+
+            outputPenStyle(){
+
+                  return `Color:${this.#color} , Cover:${this.#conver} , Refill:${this.#refill}, Width:${this.#width}`;
+            }
+
+
+
+
+            //constructor() { } //空建子
+
+            
+            constructor(color, conver, refill) {
+                //筆的屬性(特徵) property
+                //有顏色
+                this.#color = color;
+
+                //有筆蓋 分一般,特別
+                this.#conver = conver;
+
+                //有筆芯 分粗,中,細
+                this.#refill = refill;
+
+            }
+
+
+
+        }
+        
+        let Jack = new Pen("紅", "一般", "中");
+
+/*
+        console.log(Jack.color);  //get
+
+        Jack.color = "綠";  //set
+
+
+        console.log(Jack.color);  //get
+        */
+
+        //let Jack = new Pen();
+
+        Jack.Color = "綠色";
+        console.log(Jack.Color);  //get
+
+        Jack.Width = 0;
+        console.log(Jack.Width);  //get
+
+
+
+        Jack.Refill = "粗";
+        console.log(Jack.Refill);  //get
+
+        console.log(Jack.Write("Jack"));
+
+        console.log(Jack.Write());
+
+        Jack.setCover("一般");
+
+        console.log(Jack.outputPenStyle());
+
+      
+
+    </script>
+
+
+
+</body>
+
+</html>

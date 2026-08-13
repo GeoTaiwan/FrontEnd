@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /*Selector是CSS核心*/
+        /*如何靈活運用CSS Selector*/
+        h1 {
+            /*萬用字(*)會選取所有HTML elements   (目前選h1)*/
+            text-align: center;
+            color: blue;
+        }
+
+        p {
+            color: red;
+            background-color: yellow;
+            border: 1px solid green;
+        }
+        div {
+            font-size: 2rem;
+            border: 5px dotted red;
+        }
+        .firstElement {
+            /*類別選擇器的使用，通常是為了在不同的標籤，寫一樣的樣式*/
+            /*原標籤定義的格式除非被覆蓋，否則仍然適用*/
+            font-size: 3rem; 
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            /* color:blueviolet;
+            background-color: aqua; */
+        }
+        .Mary {
+            font-size: 1.5rem;
+            color: blueviolet;
+        }
+        #George {
+            color: aqua;
+        }
+        #George:hover{
+            animation: heyheyhey alternate 5s infinite;
+        }
+        @keyframes heyheyhey {
+            0%{ color: aqua};
+            33%{ color: rgb(66, 255, 255)};
+            66%{color: rgb(131, 255, 255)};
+            100%{color: rgb(255, 131, 255)};
+        }
+        /* h1:hover{
+            color: red;
+        } */
+        /* 三個基礎選擇器 */  /* 優先權： ID > CLASS > TAG */
+        /* 標籤(tag)選擇器[常作為基底]   類別(.class)選擇器[運用最廣、彈性最大]   識別(#id)選擇器[獨特性] */
+    </style>
+</head>
+
+<body>
+    <!--同網頁TAG id 不可重覆，系統不會報錯，要自己注意-->
+    <h1 class="firstElement Mary">Welcome My HomePage!!</h1>
+    <h3 class="firstElement">Welcome My HomePage!!</h3>
+    <h1 class="Mary">Welcome My HomePage!!</h1>
+    <div class="firstElement">Welcome My HomePage!!</div>
+    <p class="firstElement">Welcome My HomePage!!</p>
+    <p>Welcome My HomePage!!</p>
+    <h1>Welcome My HomePage!!</h1>
+    <h4 class="firstElement Mary">Welcome My HomePage!!</h4>
+    <h1>Welcome My HomePage!!</h1>
+    <h1>Welcome My HomePage!!</h1>
+    <div id="George">Welcome My HomePage!!</div>
+    <h4>Welcome My HomePage!!</h4>
+    <h1>Welcome My HomePage!!</h1>
+    <div>Welcome My HomePage!!</div>
+    <h1>Welcome My HomePage!!</h1>
+</body>
+
+</html>

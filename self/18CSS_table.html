@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* table,
+        th,
+        td {
+            border: 1px solid black;
+            background-color: pink;
+        } */
+        #tb1 {
+            border: 5px double black;
+            width: 400px;
+            height: 300px;  /*高度設定大於content，預設thead,tfoot僅會有內容高度，其餘由tbody內平均分配*/
+            /* background-color: pink; */
+        }
+        #tb1 th,td{
+            /*tb1 的th,td格式  #tb1與th,td間一定要空一格 */
+            border: 1px solid black;
+        }
+
+        #tb1>thead>tr>th:first-child+th{
+            /*在#tb1節點底下，thead下，tr下，所有th的第一個th，的下一個(+th) */
+            background-color: brown;
+        }
+
+        #tb1 thead{
+            /*在#tb1節點底下，尋找所有thead標籤*/
+            background-color: blue;
+            color: aqua;
+        }
+
+        #tb1>tbody>tr:nth-child(2)>td:last-child{
+            /*因為td較tr內圈，故會蓋掉原本的blue*/
+            color: red;
+        }
+        #tb1 tbody tr:nth-child(2){
+            /*在#tb1節點底下，tbody節點下，尋找所有tr標籤*/
+            /* :first-child  只要第一個子節點 */ /*:last-child 最後一個*/ /*:nth-child(n) 第n個*/
+            color:blue;
+        }
+        #tb1>tbody>tr:first-child>td:first-child+td{
+            /*表格1>tbody>第一列tr>第一欄td>的下一欄+td*/
+            font-size: 50px;
+        }
+        #tb1>tbody td:hover{
+            scale: 1.1;
+            box-shadow:1em;
+        }
+
+        a:active{
+            color: blue;
+            text-decoration: underline;
+        }
+        a:visited{
+            color: green;
+        }
+        a:link{
+            color: red;
+        }
+
+        
+        /*Container*/
+    </style>
+</head>
+
+<body>
+    <table id="tb1">
+        <caption></caption>
+        <thead>
+            <tr>
+                <th>姓名</th>
+                <th>國文</th>
+                <th>英文</th>
+                <th>數學</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>張三</td>
+                <td>75</td>
+                <td>66</td>
+                <td>92</td>
+            </tr>
+            <tr>
+                <td>李四</td>
+                <td>88</td>
+                <td>69</td>
+                <td>99</td>
+            </tr>
+            <tr>
+                <td>王五</td>
+                <td>95</td>
+                <td>62</td>
+                <td>78</td>
+            </tr>
+
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="4">製表人：王小明</td>
+            </tr>
+        </tfoot>
+    </table>
+    <hr>
+    <table width="800" height="600" id="tb2">
+        <tbody>
+            <tr>
+                <td></td>
+                <td rowspan="3"></td>
+                <td></td>
+                <td rowspan="2" colspan="2"></td>
+
+            </tr>
+            <tr>
+
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td rowspan="2"></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+
+                <td></td>
+                <td rowspan="2" colspan="2"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td rowspan="2" colspan="2"></td>
+                <td></td>
+            </tr>
+            <tr>
+
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+
+</html>

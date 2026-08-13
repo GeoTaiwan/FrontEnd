@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="table">
+            <div class="row justify-content-center">
+
+            </div>
+        </div>
+
+        <nav id="myPage" class="">
+            <ul class="pagination justify-content-center">
+
+            </ul>
+        </nav>
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@4.0.0/dist/jquery.min.js"></script>
+    <script>
+        let tempStr = `<div class="spinner-border my-3" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>`;
+        $('.container .table .row').html(tempStr);
+        $.ajax({
+            url: 'https://api.kcg.gov.tw/Api/Service/Get/9c8e1450-e833-499c-8320-29b36b7ace5c',
+            dataType: 'json',
+            success: function (resp) {
+                let myData = resp.data.AttractionList.Attractions.Attraction;
+                let structure = "";
+                let pStruc = "";
+                let item = "";
+                let pageSize = 20;
+                let pageCount = Math.ceil(myData.length / pageSize);
+                console.log(myData.length);
+                //做分頁
+                for (let i = 1; i <= pageCount; i++) {
+                    // (i*pageSize)>myData.length
+
+                    pStruc =
+                        `
+                    <li class="page-item"><a class="page-link" onclick="getDataList(${i},${i == pageCount ? myData.length % pageSize : pageSize})">${i}</a></li>
+                    `;
+                    $('#myPage ul').append(pStruc);
+                }
+            }
+        });
+
+        getDataList(1, 20);
+
+        function getDataList(page, pageSize) {
+            $.ajax({
+                url: 'https://api.kcg.gov.tw/Api/Service/Get/9c8e1450-e833-499c-8320-29b36b7ace5c',
+                dataType: 'json',
+                success: function (resp) {
+                    // console.log(resp.data);
+                    // console.log(resp.data.AttractionList.Attractions.Attraction[0].Images.Image.URL);
+
+                    let myData = resp.data.AttractionList.Attractions.Attraction;
+                    // console.log(myData);
+
+                    let structure = "";
+                    let item = "";
+
+                    //讀資料
+                    // for (let item of myData) {
+                    for (let i = (page - 1) * pageSize; i < page * pageSize; i++) {
+                        item = myData[i];
+                        // console.log('inGetList:'+item.Images.Image.URL);
+                        structure +=
+                            `
+                <div class="col-xl-3 col-md-6 mb-3">
+                <div class="card shadow h-100" >
+                    <img src="${item.Images.Image.URL}" class="card-img-top " alt="...">
+                    <div class="card-body">
+                        <h3 class="card-title fw-bold">${item.AttractionName}</h3>
+                        <p class="card-text">
+                            <div><i class="bi bi-telephone"></i>${item.Telephones.Telephone.Tel}</div>
+                            <div class="d-inline"><i class="bi bi-house-door-fill"></i>${item.PostalAddress.ZipCode}${item.PostalAddress.City}${item.PostalAddress.Town}</div>
+                            <a href="https://www.google.com/maps/place/${item.PostalAddress.ZipCode}${item.PostalAddress.City}${item.PostalAddress.Town}/@${item.PositionLat},${item.PositionLon},17z" class="text-danger">
+                                <i class="bi bi-geo-alt"></i>
+                            </a>
+                        </p>
+                        
+                    </div>
+                </div>
+                </div>
+                `;
+
+                    }
+                    $('.container .table .row').html(structure);
+                }
+            });
+
+
+        }
+    </script>
+</body>
+
+</html>

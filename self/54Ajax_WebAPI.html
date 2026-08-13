@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <table id="table1" class="table">
+            <thead>
+                <tr>
+                    <th>Geocode</th>
+                    <th>Latitude</th>
+                    <th>LocationName</th>
+                    <th>Longitude</th>
+                    <th>WeatherElement</th>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@4.0.0/dist/jquery.min.js"></script>
+    <script>
+        //API介接位置
+        //https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-D0047-065?Authorization=CWA-3739BFFC-2B51-4619-8114-0B88F9E16619&limit=30&offset=0&format=JSON
+        $.ajax({
+            type: 'Get',
+            url: 'https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-D0047-065?Authorization=CWA-3739BFFC-2B51-4619-8114-0B88F9E16619&limit=30&offset=0&format=JSON',
+            success: function (resp) {
+                console.log(resp);
+                console.log(resp.records.Locations[0].Location);
+
+                let itemData = "";
+
+                for (let item of resp.records.Locations[0].Location) {
+
+                    itemData =
+                        `
+                <tr>
+                    <td>${item.Geocode}</td>
+                    <td>${item.Latitude}</td>
+                    <td>${item.LocationName}</td>
+                    <td>${item.Longitude}</td>
+                    <td>${item.WeatherElement[7].Time[0].ElementValue[0].ProbabilityOfPrecipitation}</td>
+                </tr>
+                        `;
+                    $('#table1 tbody').append(itemData);
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        #container {
+            border: 1px solid black;
+            width: 1500px;
+            margin: auto;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+
+
+        #container>header {
+            background-color: aqua;
+            height: 200px;
+            width: inherit;
+        }
+
+        #container>nav {
+
+            background-color: rgb(17, 148, 28);
+            width: 300px;
+            height: 700px;
+
+        }
+
+
+
+        #container>section {
+            background-color: rgb(255, 0, 212);
+            width: 1200px;
+            height: 700px;
+
+
+        }
+
+        #container>footer {
+            background-color: rgb(59, 52, 153);
+            height: 150px;
+            width: inherit;
+
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div id="container">
+        <header>
+            top
+        </header>
+
+        <nav>
+            left
+        </nav>
+        <section>
+            right
+        </section>
+
+        <footer>
+            bottom
+        </footer>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function darkMode() {
+            if (document.getElementById("mainBody").style.backgroundColor == "white") {
+                document.getElementById("mainBody").style.color = "white"
+                document.getElementById("mainBody").style.backgroundColor = "black"
+                document.getElementById("bt1").innerText="WhiteMode"
+            } else {
+                document.getElementById("mainBody").style.color = "black"
+                document.getElementById("mainBody").style.backgroundColor = "white"
+                document.getElementById("bt1").innerText="DarkMode"
+            }
+        }
+    </script>
+</head>
+
+<body id="mainBody">
+    <button id="bt1" onclick="darkMode()">DarkMode</button>
+    <h1 style="background-color: yellow;">Welcome My HomePage!!</h1>
+    <h2>Welcome My HomePage!!</h2>
+    <h3>Welcome My HomePage!!</h3>
+    <h4>Welcome My HomePage!!</h4>
+    Welcome My HomePage!!
+    <p style="font-size: 16px;">Welcome My HomePage!!16px</p>
+    <h5>Welcome My HomePage!!</h5>
+    <h6>Welcome My HomePage!!</h6>
+</body>
+
+</html>

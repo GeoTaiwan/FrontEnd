@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 表單元件 ：讓使用者可以輸入複合資料 web based系統-->
+    <!-- 前端的資料(client)一定要透過伺服端(server)送到資料庫(database) -->
+    <input>
+    <input type="text">
+    <input type="password">
+    <input type="text" value="12345">
+    <hr>
+    <input type="button" value="送出" onclick="alert('啊！我被按了')"> <!-- 前端程式用 -->
+    <!-- 以下兩者須被放在form標籤中才有作用 -->
+    <input type="reset" value="送出"> <!-- 表單重置 -->
+    <input type="submit" value="送出"> <!-- 將表單送至伺服器 -->
+
+
+    <hr>
+    <!-- 若資料是「有限性」資料(即選擇有限，如縣市僅：高雄市、台北市…等，但沒有澎湖市) -->
+    <!-- 要靠name設定為一樣的來組成一組 -->
+
+    <!-- radio用在單選、checkbox用在複選 -->
+    <input type="radio" name="level">博士
+    <input type="radio" name="level">碩士
+    <input type="radio" name="level">學士
+    <input type="radio" name="level">專科
+    <input type="radio" name="level">專科以下
+
+    <hr>
+    <input type="checkbox">唱歌
+    <input type="checkbox">打遊戲
+    <input type="checkbox">睡覺
+    <input type="checkbox">踏青
+    <input type="checkbox">看書
+    <input type="checkbox">游泳
+
+    <hr>
+    <textarea rows="8" cols="30"></textarea>
+
+    <hr>
+    <!-- 下拉式選單 -->
+    <select name="" id="">
+        <option value="">aaa</option>
+        <option value="">bbb</option>
+        <option value="">ccc</option>
+    </select>
+
+    <hr>
+    <input type="range">
+    <input type="color">
+    <input type="datetime-local">
+    <hr>
+    <!-- 以下為將所有表單元件群組的標籤 -->
+    <form>
+        <!-- fieldset搭配legend使用，可將一範圍選起，用legend給說明。 -->
+        <fieldset>
+            <legend>加入會員</legend>
+            <table width="500" border="0">
+
+                <tbody>
+                    <tr>
+                        <td width="70">姓名</td>
+                        <td><input type="text" value="12345"></td>
+
+                    </tr>
+                    <tr>
+                        <td>性別</td>
+                        <td>
+                            <input type="radio" name="gender" checked>女
+                            <input type="radio" name="gender">男
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>生日</td>
+                        <td><input type="datetime-local"></td>
+                    </tr>
+                    <tr>
+                        <td>學歷</td>
+                        <td>
+                            <select>
+
+                                <option>博士</option>
+                                <option>碩士</option>
+                                <option selected>學士</option>
+                                <option>副學士</option>
+                                <option>專科</option>
+                                <option>高中/職</option>
+                                <option>國中(含)以下</option>
+
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>地址</td>
+                        <td><input type="text" style="width: 350px;"></td>
+                    </tr>
+                    <tr>
+                        <td>興趣</td>
+                        <td>
+                            <input type="checkbox">閱讀
+                            <input type="checkbox">踏青
+                            <input type="checkbox">看雲
+                            <input type="checkbox">郊遊
+                            <input type="checkbox">吟詩
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>幸運色</td>
+                        <td>
+                            <input type="color">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>年收入</td>
+                        <td>
+                            <input type="range">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>備註</td>
+                        <td>
+                            <textarea rows="5" cols="30"></textarea>
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td></td>
+                        <td>
+
+                            <input type="submit" value="送出">
+                            <input type="reset" value="取消">
+
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </fieldset>
+    </form>
+    <!-- 0410html結束，下次上課講css -->
+</body>
+
+</html>

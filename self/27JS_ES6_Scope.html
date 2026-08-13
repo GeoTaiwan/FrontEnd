@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var x = 2;
+        function cal2() {
+            var x = 5, y = 1;
+            console.log("函數中的x = " + x);
+        }
+        cal2();
+        console.log("函數外的x = " + x);
+
+        var xx = 2;
+        function cal3() {
+            xx = 5, yy = 1;
+            console.log("函數中的xx = " + xx);
+        }
+        cal3();
+        console.log("函數外的xx = " + xx);
+
+
+
+        var a = 1;
+        function b() {
+            var c = 2;
+            console.log("函數中的a = " + a);
+            console.log("函數中的c = " + c);
+        }
+        b();
+
+        // b function中，c若沒用var宣告，則c為全域變數；若有，c為b函數中變數，回傳c is not defined
+        console.log("函數外的c = " + c);
+
+    </script>
+</body>
+
+</html>

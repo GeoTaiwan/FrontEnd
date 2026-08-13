@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        a:link {
+            color: green;
+        }
+        a:active {
+            color:blue;
+        }
+        a:visited{
+            color:red;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Attributes(屬性/物件的特徵，僅此物件有)很重要 -->
+    <!-- 沒看過的物件，會很抽象。 -->
+    <a href="https://www.google.com">Yahoo</a>
+    <a href="https://www.github.com">GitHub</a>
+    <a href="https://www.w3schools.com/">w3schools</a>
+    <hr>
+    <span style="color: blue;cursor: pointer;" href="https://www.yahoo.com"><u>Yahoo!!</u></span>
+
+    <!-- 路徑表示法 -->
+
+    <a href="http://kpptr.wda.gov.tw">高屏澎東分署官網</a> <!-- 絕對路徑表示法 站外-->
+    <hr>
+    <a href="03pre.html">03pre</a> <!-- 相對路徑表示法 站內-->
+    <hr>
+    <a href="06itemMark.html">06ItemMark</a>
+    <hr>
+    <a href="test/09test.html">09test</a>
+    <hr>
+    <a href="test/test/10aaa.html">10aaa</a>
+
+    <script>
+        const span = document.getElementsByTagName("span");
+        function colorToRed() {
+            span[0].style.color = "#f00";
+        };
+        function colorToBlue() {
+            span[0].style.color = "#00f";
+        }
+        span[0].addEventListener("mousedown", colorToRed);
+        span[0].addEventListener("mouseup", colorToBlue);
+    </script>
+</body>
+
+</html>

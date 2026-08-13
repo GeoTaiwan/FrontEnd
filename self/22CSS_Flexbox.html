@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container {
+            border: 1px solid black;
+            width: 1500px;
+            /* margin設為auto時，會自動調整，可將子節點左右置中 */
+
+            margin: auto;
+            display: flex;
+            /* 預設以橫向(列,左>右)排列 */
+            flex-direction: row;
+            /*換行，預設為不換行nowrap，若不換行，就算超出父節點寬度，也會被排在一行裡*/
+            flex-wrap: wrap;
+
+            /* >*為選擇底下所有元素 */
+            >* {
+
+                color: red;
+                /* border: 1px solid black; */
+            }
+
+            >header {
+                background-color: antiquewhite;
+                height: 200px;
+                width: inherit;
+            }
+
+
+
+            >nav {
+                background-color: aqua;
+                height: 700px;
+                width: 300px;
+
+            }
+
+            >article {
+                background-color: aquamarine;
+                height: 700px;
+                width: 1200px;
+
+            }
+
+
+            >footer {
+                width: inherit;
+                background-color: blueviolet;
+                height: 200px;
+                /* clear為清除float的影響,沒有設定height時不會被影響 */
+
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container" class="">
+        <!-- contents如果想用flex，父節點display須改為flex; -->
+        <header>
+            top
+        </header>
+
+        <nav>
+            left
+        </nav>
+        <article>
+            right
+        </article>
+
+        <footer>
+            bottom
+        </footer>
+    </div>
+
+</body>
+
+</html>

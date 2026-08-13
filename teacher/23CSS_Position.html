@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container {
+            display: flex;
+            width: 1266px;
+            flex-direction: row;
+            flex-wrap: wrap;
+            margin: auto;
+            position: relative;
+
+            z-index: 500;
+        }
+
+        #container>header {
+            width: inherit;
+        }
+
+        #container>footer {
+            width: inherit;
+        }
+
+        #banner1 {
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: 100;
+        }
+
+        #banner2 {
+            position: fixed;
+            right: 0;
+            top: 0;
+            z-index: 150;
+        }
+
+        #ad {
+            position: absolute;
+            left: 106px;
+            top: 50px;
+            box-shadow: 0 0 20px black;
+        }
+
+        .hide {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="css/banner2.jpg" id="banner2">
+    <img src="css/banner1.jpg" id="banner1">
+
+
+    <div id="container">
+        <div id="ad">
+            <button onclick="setHidden()">&times;點我關閉</button><br>
+            <img src="css/ad.jpg">
+        </div>
+        <header>
+            <img src="css/top.jpg" alt="">
+        </header>
+        <nav>
+            <img src="css/left.jpg" alt="">
+        </nav>
+        <section>
+            <img src="css/right.jpg" alt="">
+        </section>
+        <footer>
+            <img src="css/bottom.jpg" alt="">
+        </footer>
+
+    </div>
+
+
+    <script>
+        function setHidden() {
+            var ad = document.getElementById("ad");
+            //ad.style.display="none";
+
+            ad.className = "hide";
+        }
+
+    </script>
+
+</body>
+
+</html>

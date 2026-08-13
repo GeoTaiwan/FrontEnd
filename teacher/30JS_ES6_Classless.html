@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        //分類=>類別class
+        //JavaScript => classless 沒有類別的物件形式
+
+
+        let a = new Date();
+
+
+        let b = Date();
+
+
+        console.log(typeof Date);
+
+        console.log(a);
+
+        console.log(typeof a);
+
+        console.log(b);
+
+        console.log(typeof b);
+
+        ////////////////////////////////////////
+
+        //鋼筆,原子筆,鉛筆 => 筆
+        //建構子(類別)
+        let Pen = function (color, conver, refill) {
+            //筆的屬性(特徵) property
+            //有顏色
+            this.color = color;
+
+            //有筆蓋 分一般,特別
+            this.conver = conver;
+
+            //有筆芯 分粗,中,細
+            this.refill = refill;
+
+            ///////////////////////////////////////
+
+            //筆的方法(功能) method
+            //會寫字
+            this.write = function (word) {
+
+                return word;
+            }
+
+            this.writeWithName = name => {
+                return name + "歡迎光臨";
+            }
+
+
+            this.outputMyStyle = () => {
+
+                return `Color:${this.color} , Cover:${this.conver} , Refill:${this.refill}`;
+            }
+
+
+
+        }
+
+        
+        let Jack = new Pen("藍色", "一般", "細");
+
+
+        console.log(Jack.writeWithName("Jack "));
+
+        console.log(Jack.outputMyStyle());
+
+
+        let Mary = new Pen("粉紅色", "特別", "中");
+
+        console.log(Mary.outputMyStyle());
+
+
+
+
+
+
+    </script>
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="css/myStyle.css">
+
+
+</head>
+
+<body>
+
+    <audio src="music/nothing.mp3" id="myAudio"></audio>
+
+    <div id="musicPlayer">
+        <div id="musicArea">
+            <p>將音樂檔案拖曳至下方清單以新增歌曲</p>
+            <select id="musicList" multiple>
+                <option value="music/nothing.mp3" selected>Nothing Ganna Change My Love For You</option>
+                <option value="music/moon.mp3">私奔到月球</option>
+            </select>
+        </div>
+        <div class="btnController">
+            <span><i onclick="playMusic()" id="btnPlay" class="fa-solid fa-play"></i></span>
+            <!--     <span onclick="pauseMusic()"><i class="fa-solid fa-pause"></i></span> -->
+            <span><i class="fa-solid fa-stop" onclick="stopMusic()"></i></span>
+            <hr>
+            <span><i class="fa-solid fa-backward-fast" onclick="changeMusic(-1)"></i></span>
+            <span><i class="fa-solid fa-backward" onclick="changeTime(-10)"></i></span>
+            <span><i class="fa-solid fa-forward" onclick="changeTime(10)"></i></span>
+            <span><i class="fa-solid fa-forward-fast" onclick="changeMusic(1)"></i></span>
+
+
+        </div>
+        <hr>
+        <div class="volumeController">
+            <input type="range" oninput="setVolume()" max="100" min="0" value="70" id="volRangeBar">
+            <span id="volInfo"></span>
+            <span><i class="fa-solid fa-volume-high" onclick="setMuted()" id="volMuted"></i></span>
+        </div>
+        <div id="infoPanel">
+            <div id="timeInfo"> 00:00 / 00:00 </div>
+
+        </div>
+
+
+    </div>
+
+    <script src="js/myPlayer.js"></script>
+</body>
+
+</html>

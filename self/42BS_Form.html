@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <style>
+        .jumbotron {
+            background-image: url(../teacher/photos/00.jpg);
+            /* 預設為cover */
+            /* bg-repeat: round會自動把bgimg變更比例塞進容器裡 */
+            background-repeat: round;
+
+
+        }
+
+        .myShadow {
+            /* box-shadow: var(--bs-box-shadow) !important; */
+            box-shadow: 0 0 20px rgb(155, 155, 155);
+        }
+
+        .ts {
+            text-shadow: 2px 3px 3px rgb(0, 0, 0);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- d-none為隱藏，d-print為列印時變為block -->
+    <div class="d-none d-print-block">衝三小，別亂印網頁!!!</div>
+    <!-- d-print-none為列印時隱藏 -->
+    <div class="container d-print-none">
+        <!-- head -->
+        <div class="jumbotron mt-4 py-5 px-2 bg-dark text-white rounded-3 myShadow row">
+            <div class="col-xl-8 col-md-7">
+                <h1 class="fw-bold ts">世界那麼大 我想去看看</h1>
+                <p class="fw-bold ts">錢包那麼小 是能看三小</p>
+                <hr>
+                <button class="btn btn-success fw-bold">了解更多…</button>
+            </div>
+            <div class="col-xl-4 col-md-5 d-none d-md-block justify-content-start">
+                <img src="../teacher/photos/03.jpg" alt="" class="img-fluid">
+            </div>
+        </div>
+        <!-- cards -->
+        
+
+
+
+    </div>
+    
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

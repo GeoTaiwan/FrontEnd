@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        #table1 {
+            border: 5px solid black;
+            margin: auto;
+        }
+
+        #table1>thead {
+
+
+            width: inherit;
+        }
+
+        #table1>thead>th {
+            position: absolute;
+            top: 0px;
+            left: inherit;
+        }
+
+        #table1>tbody>tr {
+            color: aliceblue;
+            background-color: rgb(27, 12, 167);
+        }
+
+        #table1>tbody>tr:hover {
+            color: rgb(27, 12, 167);
+            background-color: rgba(27, 12, 167, 0.5);
+            /* opacity: 1; */
+        }
+
+        #table1 thead {
+            background-color: brown;
+            color: white;
+        }
+        /* 第6列(不含th) 第3欄 */
+        #table1>tbody>tr:nth-child(6)>td:nth-child(3) {
+            color: red;
+        }
+
+        /* 2n+1奇數 2n偶數 */
+        #table1>tbody>tr:nth-child(2n) {
+            /* height: 75px;
+            overflow: hidden; */
+            opacity: 0.5;
+        }
+
+        #table img {
+            display: inline-block;
+            height: 75px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <table id="table1">
+    </table>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $.ajax({
+            type: 'get',
+            url: 'https://data.moa.gov.tw/Service/OpenData/ODwsv/ODwsvAttractions.aspx',
+            success: function (data) {
+                var item = `<thead>
+                                <tr>
+                                    <th>圖片</th>
+                                    <th>名稱</th>
+                                    <th>電話</th>
+                                    <th>地址</th>
+                                </tr>
+                            </thead>`;
+                for (var i = 0; i < data.length; i++) {
+                    item += `<tr>
+                                                <td><img src="${data[i].Photo}" width="150" /></td>
+                                                <td>${data[i].Name}</td>
+                                                <td>${data[i].Tel}</td>
+                                                <td>${data[i].City}${data[i].Town}${data[i].Address}</td>
+                                                
+                                            </tr>`;
+
+                }
+                $('#table1').append(item);
+            }
+
+        });
+
+    </script>
+</body>
+
+</html>

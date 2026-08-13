@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        //變數的scope
+        var a = 5, b = 0;
+        let x = 2, y = 0;
+
+
+        function cal() {
+            var c = a + b;
+            let z = x + y;
+            console.log("c=" + c);
+            console.log("z=" + z);
+        }
+        cal();
+
+        /*console.log("c=" + c);
+        console.log("z=" + z);*/
+
+        ///////////////////////////////////////
+
+        var d = [];
+
+        for (let i = 0; i < 10; i++) {
+            d[i] = i;
+        }
+
+        console.log(d);
+
+        ///////////////////////////////////////
+
+
+        var f = [];
+
+        for (let i = 0; i < 10; i++) {
+            f[i] = function () {
+                console.log(i);
+
+            }
+        }
+
+        f[2]();
+        f[3]();
+        f[4]();
+        f[5]();
+
+        ///////////////////////////////////////
+        test();
+
+        function test() {
+            console.log("test function");
+
+
+        }
+
+        //test2();
+
+        let test2 = function () {
+            console.log("test2 function");
+
+        }
+
+        test2();
+
+        //////////////////////////////////////////
+        var q = [];
+        for (var i = 0; i < 10; i++) {
+            q[i] = function () {
+                console.log(i);
+
+            }
+        }
+        q[2]();
+        q[3]();
+        q[4]();
+        q[5]();
+
+
+        //////////////////////////////////////////
+
+        var qq = [];
+        for (let i = 0; i < 10; i++) {
+            qq[i] = function () {
+                console.log(i);
+
+            }
+        }
+        qq[2]();
+        qq[3]();
+        qq[4]();
+        qq[5]();
+
+    </script>
+
+
+
+</body>
+
+</html>

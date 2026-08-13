@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /* let Pen = function (color, conver, refill) {
+            //筆的屬性(特徵) property
+            //有顏色
+            this.color = color;
+
+            //有筆蓋 分一般,特別
+            this.conver = conver;
+
+            //有筆芯 分粗,中,細
+            this.refill = refill;
+
+            ///////////////////////////////////////
+
+            //筆的方法(功能) method
+            //會寫字
+            this.write = function (word) {
+
+                return word;
+            }
+
+            this.writeWithName = name => {
+                return name + "歡迎光臨";
+            }
+
+
+            this.outputMyStyle = () => {
+
+                return `Color:${this.color} , Cover:${this.conver} , Refill:${this.refill}`;
+            }
+
+
+
+        } */
+        class Pen {
+            // field(欄位)
+            // 預設為 public 公有的
+            // 加#字號在前為 private 私有的
+            #color;
+            #cover;
+            #refill;
+            #width;
+            // 建構子，可省略
+            constructor(color, cover, refill) {
+                this.Color = color;
+                this.#cover = cover;
+                this.#refill = refill;
+            }
+            // 屬性封裝，首字大寫
+            get Color() {
+                return "這是一隻" + this.#color + "的筆";
+            }
+            set Color(c) {
+                this.#color = c;
+            }
+            get Width() {
+                return `這隻筆的長度是：${this.#width}`;
+            }
+            set Width(v) {
+                this.#width = v < 3 ? 3 : v;
+            }
+            // 唯寫，只做set
+            set Refill(v) {
+                this.#refill = v;
+            }
+            // 方法封裝
+            Write(name) {
+                return name == undefined ? `Hello World!!` : `${name} Hello World!!`;
+            }
+            // JS沒有多載，僅 最後一個方法 會被呼叫
+            /* Write(){
+                return `Hello World!!`;
+            } */
+            // 方法封裝，若做成屬性封裝，就算是唯寫，仍為可見
+            setCover(v) {
+                this.#cover = v;
+            }
+            outputPenStyle() {
+                return `Color:${this.#color}, Cover:${this.#cover}, Refill:${this.#refill}`;
+            }
+        }
+        /*
+        let Jack = new Pen("紅","一般","中");
+        console.log(Jack.color);    // get
+        Jack.color = "綠";          // set
+        console.log(Jack.color);    // get
+        */
+        // 資料可以做唯讀(只做get)或唯寫(只做set)
+
+        let Jack = new Pen();
+
+        Jack.Color = "綠色";
+        console.log(Jack.Color);
+
+        Jack.Width = 0;
+        console.log(Jack.Width);
+        // 只有setter
+        Jack.Refill = "粗";
+        console.log(Jack.Refill);
+
+        console.log(Jack.Write("Jack"));
+        console.log(Jack.Write());
+
+        Jack.setCover("一般");
+        console.log(Jack.outputPenStyle());
+
+
+
+    </script>
+</body>
+
+</html>

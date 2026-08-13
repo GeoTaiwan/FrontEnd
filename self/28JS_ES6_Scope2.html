@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var d = [];
+        for (let i = 0; i < 10; i++) {
+            d[i] = i;
+        }
+        console.log(d);
+
+        var f = [];
+        for (let i = 0; i < 10; i++) {
+            f[i] = function () {
+                console.log(i);
+            }
+        }
+        f[2]();
+
+
+        ////////////////////////////
+        test();
+        function test() {
+            console.log("test function");
+        }
+
+        // 將function存在變數中，不可在存入變數之前呼叫
+        // test2();
+        let test2 = function () {
+            console.log("test2 function");
+        }
+        // 用let與var宣告的差別為 let較為嚴謹
+
+        var d = [];
+        for (let i = 0; i < 10; i++) {
+            d[i] = function () {
+                console.log(i);
+            }
+        }
+        
+        d[7]();
+        d[6]();
+        d[5]();
+        d[4]();
+        // 上述將函數存入d的迴圈，若是i使用var宣告，則每次執行各階段的i(如0~9)都會再執行一次，甚至跳出迴圈外時的i=10，也會再被執行
+
+    </script>
+</body>
+
+</html>

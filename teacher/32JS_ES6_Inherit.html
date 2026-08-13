@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        //類別、物件、建構子、屬性、方法、欄位、繼承
+        //在JS無法直接實作的是:方法多載(overloading)、建構子多載、多型
+
+        //類別繼承的實作
+        //繼承的目的是:減少程式碼重複撰寫
+        //透過物件的抽象化
+
+        //實作類別:狗、貓、豬、牛....
+        //雞、鴨=>禽
+        //雞、鴨、鳥、鵝=>鳥
+        //豬、牛=>畜
+        //魚、蝦、貝=>海鮮
+        //狗、貓、豬=>寵物
+        //雞、鴨、豬、牛、狗、貓、魚、蝦、貝=>動物
+
+
+        //狗、貓、豬=>寵物
+
+
+        class Pet {
+            //欄位
+            #name;
+            #age;
+            #gender;
+
+            //屬性
+            get Name() {
+                return this.#name;
+            }
+            set Name(val) {
+                this.#name = val;
+            }
+
+            get Age() {
+                return this.#age;
+            }
+            set Age(val) {
+                this.#age = val;
+            }
+
+            get Gender() {
+                return this.#gender;
+            }
+            set Gender(val) {
+                this.#gender = val;
+            }
+
+            Eat() {
+                return "吃";
+            }
+           
+        }
+
+
+        class Dog extends Pet {
+
+
+            RunFast() {
+                return "跑得很快";
+            }
+
+        }
+
+        class Cat extends Pet {
+
+            Run() {
+                return "跑";
+            }
+            Jump() {
+                return "跳得很高";
+            }
+        }
+
+
+        class Pig extends Pet {
+
+            Run() {
+                return "跑";
+            }
+        }
+
+        class Fish extends Pet{
+            Swim(){
+                return "游";
+            }
+        }
+
+
+       let Jack=new Fish();
+        Jack.
+    
+
+
+    </script>
+
+
+
+</body>
+
+</html>

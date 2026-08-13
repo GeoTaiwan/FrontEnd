@@ -1,0 +1,46 @@
+.jumbotron {
+    background-image: url('/teacher/photos/00.jpg');
+    background-repeat: round;
+
+}
+
+.myBoxShadow {
+    box-shadow: 0 0 20px rgb(155, 155, 155) !important;
+}
+
+.textShadow {
+    text-shadow: 1px 1px 3px black;
+
+
+}
+
+.MyBgImage {
+    background-image: url('/teacher/photos/00.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.picSlideArea{
+    border-radius: 10px !important;
+}
+
+.carousel {
+    
+    >.carousel-indicators,
+    .carousel-caption,
+    .carousel-control-prev,
+    .carousel-control-next {
+        transition: visibility 3s;
+    }
+}
+
+.carousel:hover {
+
+    >.carousel-indicators,
+    .carousel-caption,
+    .carousel-control-prev,
+    .carousel-control-next {
+        visibility: visible !important;
+    }
+}
