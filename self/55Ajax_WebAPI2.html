@@ -64,6 +64,7 @@
                 dataType: 'json',
                 success: function (resp) {
                     myData = resp.data.AttractionList.Attractions.Attraction;
+                    // console.log(myData);
                     callback(myData);   //回呼方法;
                 }
             });
@@ -162,9 +163,10 @@
                         <p class="card-text">
                             <div><i class="bi bi-telephone"></i>${item.Telephones.Telephone.Tel}</div>
                             <div class="d-inline"><i class="bi bi-house-door-fill"></i>${item.PostalAddress.ZipCode}${item.PostalAddress.City}${item.PostalAddress.Town}</div>
-                            <a href="https://www.google.com/maps/place/${item.PostalAddress.ZipCode}${item.PostalAddress.City}${item.PostalAddress.Town}/@${item.PositionLat},${item.PositionLon},17z" class="text-danger">
+                            <a href="https://www.google.com/maps/place/${item.PostalAddress.ZipCode}${item.PostalAddress.City}${item.PostalAddress.Town}/@${item.PositionLat},${item.PositionLon},17z" class="text-danger position-relative z-2">
                                 <i class="bi bi-geo-alt"></i>
                             </a>
+                            <a href="${item.WebsiteURL}" class="stretched-link"></a>
                         </p>
                         
                     </div>
